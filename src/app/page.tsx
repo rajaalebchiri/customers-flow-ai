@@ -1,27 +1,28 @@
 "use client";
-import { useUser } from "@auth0/nextjs-auth0/client";
-import { useQuery } from "convex/react";
-
-import { api } from "../../convex/_generated/api";
-import Header from "@/components/Header";
+import Hero from "@/components/(LandingPage)/Hero";
+import { Features } from "@/components/(LandingPage)/Features";
+import FAQs from "@/components/(LandingPage)/FAQs";
+import CTA from "@/components/(LandingPage)/CTA";
+import Posts from "@/components/(LandingPage)/Posts";
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
-  const tasks = useQuery(api.tasks.get);
-  if (isLoading) return <p>Loading ....</p>;
-  if (error) return <p>{error.message}</p>;
   return (
     <main>
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        dashboard
-        {/* Your content */}
-      </div>
-      <div className="p-10 flex flex-col gap-6">
-        <main className="">
-          {tasks?.map(({ _id, text }) => <div key={_id}>{text}</div>)}
-        </main>
-        <main className="flex gap-3">home page</main>
-      </div>
+      {/* Hero */}
+      <Hero />
+
+      {/* Features */}
+      <Features />
+
+      {/* FAQs */}
+      <FAQs />
+
+      {/* CTAs */}
+
+      {/* Blog Posts Section */}
+      <Posts />
+
+      <CTA />
     </main>
   );
 }

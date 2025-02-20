@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
+import { withContentlayer } from 'next-contentlayer'
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+//const { withContentlayer } = require('next-contentlayer')
 
-export default nextConfig;
+
+// const nextConfig: NextConfig = {
+//   reactStrictMode: true, swcMinify: true
+// };
+
+export default withContentlayer({});
