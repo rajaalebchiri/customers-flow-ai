@@ -1,7 +1,8 @@
 import React from "react";
 import BreadCrumb from "./BreadCrumb";
 import { Card } from "../ui/card";
-import { Star, Trash } from "lucide-react";
+import { Headphones, Star, Trash } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 type Props = {};
 
@@ -16,6 +17,14 @@ const InfoBar = (props: Props) => {
             <Star />
           </Card>
         </div>
+        <Avatar>
+          <AvatarFallback className="bg-primary text-white">
+            <Headphones />
+          </AvatarFallback>
+        </Avatar>
+        <Avatar>
+         <AvatarImage src="https://github.com/shadcn.png"/>
+        </Avatar>
       </div>
     </div>
   );

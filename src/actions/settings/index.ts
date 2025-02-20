@@ -1,4 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
+import { api } from "convex/_generated/api";
+import { fetchMutation, fetchQuery } from "convex/nextjs";
 
 export const getPlan = async () => {
     try {
@@ -6,7 +8,14 @@ export const getPlan = async () => {
 
         if (!user) return;
 
-        return user
+        async function getPlanDB(data: { name: string}) {
+                "use server";
+                await fetchQuery(api.billing_plans.getPlanType, {
+                    authId: data["authId"] as string,
+                });
+            }
+
+        return user.sub
 
         
     } catch (error) {

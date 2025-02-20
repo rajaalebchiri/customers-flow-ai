@@ -25,7 +25,7 @@ auth0
 
 convex
 
-contentlayer for blog with mdx files
+contentlayer for blog with mdx files  : need to finish
 
 
 you can use ngrok to test the auth0 triggers before deployment with a domain

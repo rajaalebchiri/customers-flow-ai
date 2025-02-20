@@ -1,11 +1,21 @@
-import type { NextConfig } from "next";
-import { withContentlayer } from 'next-contentlayer'
+const { withContentlayer } = require("next-contentlayer");
 
-//const { withContentlayer } = require('next-contentlayer')
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+    experimental: {
+        
+        turbo: {
+            resolveExtensions: [
+                '.mdx',
+                '.tsx',
+                '.ts',
+                '.jsx',
+                '.js',
+                '.mjs',
+                '.json',
+            ],
+        },
+    },
+};
 
-
-// const nextConfig: NextConfig = {
-//   reactStrictMode: true, swcMinify: true
-// };
-
-export default withContentlayer({});
+module.exports = withContentlayer(nextConfig);

@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
+    "build:content": "contentlayer build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.6.0",
+    "@contentlayer/core": "^0.3.4",
+    "@contentlayer/source-files": "^0.3.4",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-accordion": "^1.2.3",

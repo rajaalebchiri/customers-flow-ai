@@ -9,7 +9,7 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { Button } from "./ui/button";
@@ -23,11 +23,13 @@ const navigation = [
   { name: "Reports", href: "#", current: false },
 ];
 const userNavigation = [
+  { name: "Dashboard", href: "/dashboard" },
   { name: "Your Profile", href: "#" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "/api/auth/logout" },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
 }
@@ -203,9 +205,6 @@ export default function Header() {
             )}
           </DisclosurePanel>
         </Disclosure>
-
-       
-        
       </div>
     </>
   );
