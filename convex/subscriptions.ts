@@ -9,29 +9,17 @@ export const getSubscription = query({
 });
 
 export const createSubscription = mutation({
-    args: { authId: v.string(), email: v.string() },
+    args: { authId: v.string(), email: v.string(), planId: v.string(), status: v.string(), },
     handler: async (ctx, args) => {
-        // First check if user exists
 
-        console.log(args);
+        const subscriptionId = await ctx.db.insert("subscriptions", {
+            userId: args.authId,
+            planId: args.planId,
+            status: args.status,
+            startDate: new Date().toISOString(),
+            endDate: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
+        });
 
-        const existingUser = await ctx.db
-            .query("users")
-            .filter((q) => q.eq(q.field("email"), args.email || ""))
-            .unique();
-
-        console.log("existing user", existingUser)
-
-        // If user doesn't exist, create new user
-        if (existingUser == null) {
-            const userId = await ctx.db.insert("users", {
-                auth_id: args.authId,
-                email: args.email
-            });
-            return userId;
-        }
-
-        // Return existing user's ID if already exists
-        return existingUser.auth_id;
+        return subscriptionId
     },
 });

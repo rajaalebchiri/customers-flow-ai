@@ -8,7 +8,7 @@ export const get = query({
     },
 });
 
-export const getPlanType = query({
+export const getPlan = query({
     args: {name: v.string()},
     handler: async (ctx, args) => {
         const plan = await ctx.db
