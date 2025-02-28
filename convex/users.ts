@@ -22,14 +22,13 @@ export const createUser = mutation({
 
             const plan = await ctx.db
                 .query("billing_plans")
-                .filter((q) => q.eq("name", "free"))
-                .collect();
-            console.log("plan", plan);
+                .filter((q) => q.eq(q.field("name"), "free"))
+                .unique();
 
             const userId = await ctx.db.insert("users", {
                 auth_id: args.authId,
                 email: args.email,
-                planID: plan?._id || "free",
+                planID:  plan?._id || "free",
             });
 
             // Return userId or null if creation fails

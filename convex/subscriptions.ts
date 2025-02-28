@@ -2,9 +2,10 @@ import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
 
 export const getSubscription = query({
-    args: {},
-    handler: async (ctx) => {
-        return await ctx.db.query("users").collect();
+    args: { authId: v.string() },
+    handler: async (ctx, args) => {
+        const user = await ctx.db.query("users").filter((q) => q.eq(q.field("auth_id"), args.authId)).unique();
+        return await ctx.db.query("subscriptions").filter((q) => q.eq(q.field("userId"), user?._id)).unique();
     },
 });
 

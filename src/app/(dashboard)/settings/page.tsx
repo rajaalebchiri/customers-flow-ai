@@ -1,28 +1,25 @@
-"use client";
-
 import React from "react";
 import Billing from "./_components/Billing";
 import InfoBar from "@/components/(dashboard)/InfoBar";
-import { Button } from "@/components/ui/button";
-import { useMutation } from "convex/react";
-import { api } from "convex/_generated/api";
 
-const SettingsPage =  () => {
+import { getSession } from "@auth0/nextjs-auth0";
 
-  const createP = useMutation(api.users.createUser)
-
-  const createUser = () => {
-    createP({ email: "test", authId: "test" });
-   }
-
+const SettingsPage = async () => {
+  const session = await getSession();
+  const user = session?.user;
 
   return (
     <main className="p-12">
       <InfoBar />
-      <div className="overflow-y-auto w-full chat-window flex-1 h-0 flex flex-col gap-10">
-        <Billing />
+      {/* <div className="overflow-y-auto w-full chat-window flex-1 h-0 flex flex-col gap-10"> */}
+         <div className="w-full chat-window flex-1 h-0 flex flex-col gap-10">
+        {user && (
+          <div>
+            {" "}
+            <Billing authId={user?.sub || ""} />{" "}
+          </div>
+        )}
       </div>
-      <Button onClick={() => createUser()}>create</Button>
     </main>
   );
 };

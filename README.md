@@ -46,3 +46,12 @@ await axios.post("https://6aa5-41-250-151-59.ngrok-free.app/api/auth/post-signup
 };
 ```
 
+
+added convex for data
+i used schemas.ts for schema
+
+and seperated pages for other crud functions
+
+
+
+
