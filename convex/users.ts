@@ -7,6 +7,17 @@ export const get = query({
         return await ctx.db.query("users").collect();
     },
 });
+
+export const getUser = query({
+    args: { authId: v.string() },
+    handler: async (ctx, args) => {
+        return await ctx.db
+            .query("users")
+            .filter((q) => q.eq(q.field("auth_id"), args.authId))
+            .unique();
+    }
+})
+
 export const createUser = mutation({
     args: { authId: v.string(), email: v.string() },
     handler: async (ctx, args) => {

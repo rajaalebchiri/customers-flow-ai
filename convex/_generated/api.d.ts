@@ -16,6 +16,7 @@ import type {
 import type * as billing_plans from "../billing_plans.js";
 import type * as subscriptions from "../subscriptions.js";
 import type * as users from "../users.js";
+import type * as websites from "../websites.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -29,6 +30,7 @@ declare const fullApi: ApiFromModules<{
   billing_plans: typeof billing_plans;
   subscriptions: typeof subscriptions;
   users: typeof users;
+  websites: typeof websites;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,

@@ -4,25 +4,19 @@ import { Features } from "@/components/(LandingPage)/Features";
 import FAQs from "@/components/(LandingPage)/FAQs";
 import CTA from "@/components/(LandingPage)/CTA";
 import Posts from "@/components/(LandingPage)/Posts";
+import Header from "@/components/Header";
+import FooterSection from "@/components/sections/footer/default";
 
 export default function Home() {
   return (
     <main>
-      {/* Hero */}
+      <Header />
       <Hero />
-
-      {/* Features */}
       <Features />
-
-      {/* FAQs */}
       <FAQs />
-
-      {/* CTAs */}
-
-      {/* Blog Posts Section */}
       <Posts />
-
       <CTA />
+      <FooterSection />
     </main>
   );
 }

@@ -8,8 +8,8 @@ type Props = {
 }
 
 const SectionHeader = (props: Props) => {
-    console.log(props)
-  return (
+
+    return (
       <div>
           <p className='text-sm font-semibold'>{props.label}</p>
           <p className='text-sm font-light'>{props.message}</p>
