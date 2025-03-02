@@ -1,5 +1,6 @@
 "use client";
 
+import { ChatProvider } from "@/context/chatsContext";
 import { useEffect, useState } from "react";
 
 import React from "react";
@@ -35,10 +36,9 @@ const Layout = ({ children }: Props) => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div>
-      Layout{children}
-      hello
-    </div>
+    <ChatProvider>
+      <div className="flex h-screen w-full">sidebar {children}</div>
+    </ChatProvider>
   );
 };
 
